@@ -36,3 +36,9 @@
 ```
 docker run -it --rm hurtom/php:cli php -v
 ```
+
+#### Tags
+
+* [`cli`, `latest` (7.1/cli/Dockerfile)](https://github.com/hurtom/php/blob/master/7.1/cli/Dockerfile)
+* [`fpm` (7.1/fpm/Dockerfile)](https://github.com/hurtom/php/blob/master/7.1/fpm/Dockerfile)
+* [`nginx` (7.1/nginx/Dockerfile)](https://github.com/hurtom/php/blob/master/7.1/nginx/Dockerfile)
