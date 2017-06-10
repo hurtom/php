@@ -6,9 +6,7 @@ RUN curl -L https://getcomposer.org/installer -o composer-setup.php \
     && php composer-setup.php --install-dir=/usr/local/bin --filename=composer \
     && rm -f composer-setup.php
 
-RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 573BFD6B3D8FBC641079A6ABABF5BD827BD9BF62 \
-    && echo "deb http://nginx.org/packages/mainline/debian/ jessie nginx" >> /etc/apt/sources.list \
-    && apt-get update \
+RUN && apt-get update \
     && apt-get install --no-install-recommends --no-install-suggests -y \
                        libxml2-dev \
                        zlib1g-dev \

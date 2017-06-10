@@ -31,6 +31,8 @@
       - ./php.ini:/usr/local/etc/php/php.ini
 ```
 
+See an example [nginx.conf](https://github.com/hurtom/php/blob/master/7.1/nginx/nginx.conf)
+
 #### CLI
 
 ```
