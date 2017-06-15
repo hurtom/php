@@ -25,7 +25,7 @@ RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 573BFD6B3D8FBC64107
                        gettext-base \
     && pecl install redis xdebug \
     && docker-php-ext-enable redis xdebug \
-    && docker-php-ext-install opcache mysqli pdo_mysql zip \
+    && docker-php-ext-install bcmath mysqli opcache pdo_mysql zip \
     && apt-get clean -y \                               
     && rm -rf /var/lib/apt/lists/*
 

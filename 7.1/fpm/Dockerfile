@@ -15,6 +15,6 @@ RUN apt-get update \
                        ca-certificates \
     && pecl install redis xdebug \
     && docker-php-ext-enable redis xdebug \
-    && docker-php-ext-install opcache mysqli pdo_mysql zip \
+    && docker-php-ext-install bcmath mysqli opcache pdo_mysql zip \
     && apt-get clean -y \                    
     && rm -rf /var/lib/apt/lists/*
