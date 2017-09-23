@@ -10,6 +10,9 @@ RUN apt-get update \
     && apt-get install --no-install-recommends --no-install-suggests -y \
                        libxml2-dev \
                        zlib1g-dev \
+                       libfreetype6-dev \
+                       libjpeg62-turbo-dev \
+                       libpng12-dev \
                        unzip \
                        git \
                        ca-certificates \
