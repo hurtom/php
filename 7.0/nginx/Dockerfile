@@ -26,12 +26,19 @@ RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 573BFD6B3D8FBC64107
                        nginx-module-perl \
                        nginx-module-njs \
                        gettext-base \
+                       locales \
     && pecl install redis xdebug \
     && docker-php-ext-enable redis xdebug \
     && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
-    && docker-php-ext-install bcmath gd mysqli opcache pdo_mysql zip \
-    && apt-get clean -y \                               
+    && docker-php-ext-install bcmath gd gettext mysqli opcache pdo_mysql zip \
+    && apt-get clean -y \                    
     && rm -rf /var/lib/apt/lists/*
+
+RUN echo "Europe/Kiev" > /etc/timezone \
+    && dpkg-reconfigure -f noninteractive tzdata \
+    && sed -i -e 's/# en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen \
+    && sed -i -e 's/# uk_UA.UTF-8 UTF-8/uk_UA.UTF-8 UTF-8/' /etc/locale.gen \
+    && dpkg-reconfigure --frontend=noninteractive locales
 
 RUN ln -sf /dev/stdout /var/log/nginx/access.log \
     && ln -sf /dev/stderr /var/log/nginx/error.log
