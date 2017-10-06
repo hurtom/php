@@ -54,17 +54,12 @@ RUN curl -L https://getcomposer.org/installer -o composer-setup.php \
 RUN cp /usr/share/zoneinfo/Europe/Kiev /etc/localtime \
     && echo "Europe/Kiev" > /etc/timezone
 
-RUN { \
-        echo '[global]'; \
-        echo 'daemonize = no'; \
-        echo; \
-        echo '[www]'; \
-        echo 'listen = 127.0.0.1:9000'; \
-        echo 'clear_env = no'; \
-    } | tee /etc/php7/php-fpm.d/zz-docker.conf
-
 COPY runit /etc/runit
 COPY nginx.conf /etc/nginx/nginx.conf
+COPY www.conf /etc/php7/php-fpm.d/www.conf
+
+RUN sed -i "/\[global\]/a daemonize = no" /etc/php7/php-fpm.conf \
+    && sed -i "/\[global\]/a error_log = /proc/self/fd/2" /etc/php7/php-fpm.conf
 
 RUN find /etc/runit -type f -exec chmod +x {} \;
 
