@@ -59,7 +59,7 @@ RUN { \
         echo 'daemonize = no'; \
         echo; \
         echo '[www]'; \
-        echo 'listen = [::]:9000'; \
+        echo 'listen = 127.0.0.1:9000'; \
         echo 'clear_env = no'; \
     } | tee /etc/php7/php-fpm.d/zz-docker.conf
 
