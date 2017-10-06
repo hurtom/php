@@ -49,10 +49,6 @@ docker run -it --rm hurtom/php:cli php -v
 * [`7.1-fpm-alpine`, `fpm-alpine` (7.1/alpine/fpm/Dockerfile)](https://github.com/hurtom/php/blob/master/7.1/alpine/fpm/Dockerfile)
 * [`7.1-nginx-alpine`, `nginx-alpine` (7.1/alpine/nginx/Dockerfile)](https://github.com/hurtom/php/blob/master/7.1/alpine/nginx/Dockerfile)
 
-* [`7.0-cli` (7.0/cli/Dockerfile)](https://github.com/hurtom/php/blob/master/7.0/cli/Dockerfile)
-* [`7.0-fpm` (7.0/fpm/Dockerfile)](https://github.com/hurtom/php/blob/master/7.0/fpm/Dockerfile)
-* [`7.0-nginx` (7.0/nginx/Dockerfile)](https://github.com/hurtom/php/blob/master/7.0/nginx/Dockerfile)
-
 * [`5.6-cli` (5.6/cli/Dockerfile)](https://github.com/hurtom/php/blob/master/5.6/cli/Dockerfile)
 * [`5.6-fpm` (5.6/fpm/Dockerfile)](https://github.com/hurtom/php/blob/master/5.6/fpm/Dockerfile)
 * [`5.6-nginx` (5.6/nginx/Dockerfile)](https://github.com/hurtom/php/blob/master/5.6/nginx/Dockerfile)
