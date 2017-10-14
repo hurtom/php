@@ -40,8 +40,7 @@ RUN echo "Europe/Kiev" > /etc/timezone \
     && sed -i -e 's/# uk_UA.UTF-8 UTF-8/uk_UA.UTF-8 UTF-8/' /etc/locale.gen \
     && dpkg-reconfigure --frontend=noninteractive locales
 
-RUN usermod -u 1000 www-data \
-    && usermod -g 1000 www-data
+RUN sed -ri 's/^www-data:x:33:33:/www-data:x:1000:1000:/' /etc/passwd
 
 RUN ln -sf /dev/stdout /var/log/nginx/access.log \
     && ln -sf /dev/stderr /var/log/nginx/error.log
