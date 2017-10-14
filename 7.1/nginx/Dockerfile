@@ -1,4 +1,4 @@
-FROM php:7.1-fpm
+FROM php:7.1-fpm-jessie
 
 LABEL maintainer "https://github.com/hurtom/"
 
@@ -40,12 +40,16 @@ RUN echo "Europe/Kiev" > /etc/timezone \
     && sed -i -e 's/# uk_UA.UTF-8 UTF-8/uk_UA.UTF-8 UTF-8/' /etc/locale.gen \
     && dpkg-reconfigure --frontend=noninteractive locales
 
+RUN usermod -u 1000 www-data \
+    && usermod -g 1000 www-data
+
 RUN ln -sf /dev/stdout /var/log/nginx/access.log \
     && ln -sf /dev/stderr /var/log/nginx/error.log
 
-COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 COPY nginx.conf /etc/nginx/nginx.conf
 
-EXPOSE 80 443
+EXPOSE 80
+
+COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 CMD ["supervisord"]

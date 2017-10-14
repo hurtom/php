@@ -1,4 +1,4 @@
-FROM php:5.6-fpm
+FROM php:5.6-fpm-jessie
 
 LABEL maintainer "https://github.com/hurtom/"
 
@@ -29,3 +29,6 @@ RUN echo "Europe/Kiev" > /etc/timezone \
     && sed -i -e 's/# en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen \
     && sed -i -e 's/# uk_UA.UTF-8 UTF-8/uk_UA.UTF-8 UTF-8/' /etc/locale.gen \
     && dpkg-reconfigure --frontend=noninteractive locales
+
+RUN usermod -u 1000 www-data \
+    && usermod -g 1000 www-data
