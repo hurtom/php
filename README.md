@@ -53,4 +53,8 @@ docker run -it --rm hurtom/php:cli php -v
 * [`5.6-fpm` (5.6/fpm/Dockerfile)](https://github.com/hurtom/php/blob/master/5.6/fpm/Dockerfile)
 * [`5.6-nginx` (5.6/nginx/Dockerfile)](https://github.com/hurtom/php/blob/master/5.6/nginx/Dockerfile)
 
+* [`5.6-cli-alpine` (5.6/alpine/cli/Dockerfile)](https://github.com/hurtom/php/blob/master/5.6/cli/Dockerfile)
+* [`5.6-fpm-alpine` (5.6/alpine/fpm/Dockerfile)](https://github.com/hurtom/php/blob/master/5.6/fpm/Dockerfile)
+* [`5.6-nginx-alpine` (5.6/alpine/nginx/Dockerfile)](https://github.com/hurtom/php/blob/master/5.6/nginx/Dockerfile)
+
 **Note:** `alpine` images have a slightly different behavior. Make sure to test before going into production
