@@ -33,3 +33,6 @@ RUN cp /usr/share/zoneinfo/Europe/Kiev /etc/localtime \
     && echo "Europe/Kiev" > /etc/timezone
 
 RUN sed -ri 's/^www-data:x:82:82:/www-data:x:1000:1000:/' /etc/passwd
+
+RUN sed -ri '/^access.log/ s/^/; /' /usr/local/etc/php-fpm.d/docker.conf \
+    && sed -ri "s/^pm = dynamic/pm = ondemand/" /usr/local/etc/php-fpm.d/www.conf

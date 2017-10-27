@@ -31,3 +31,6 @@ RUN echo "Europe/Kiev" > /etc/timezone \
     && dpkg-reconfigure --frontend=noninteractive locales
 
 RUN sed -ri 's/^www-data:x:33:33:/www-data:x:1000:1000:/' /etc/passwd
+
+RUN sed -ri '/^access.log/ s/^/; /' /usr/local/etc/php-fpm.d/docker.conf \
+    && sed -ri "s/^pm = dynamic/pm = ondemand/" /usr/local/etc/php-fpm.d/www.conf
