@@ -1,4 +1,4 @@
-FROM php:7.1-fpm-jessie
+FROM php:7.2-fpm-stretch
 
 LABEL maintainer "https://github.com/hurtom/"
 
@@ -7,7 +7,7 @@ RUN curl -L https://getcomposer.org/installer -o composer-setup.php \
     && rm -f composer-setup.php
 
 RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 573BFD6B3D8FBC641079A6ABABF5BD827BD9BF62 \
-    && echo "deb http://nginx.org/packages/mainline/debian/ jessie nginx" >> /etc/apt/sources.list \
+    && echo "deb http://nginx.org/packages/mainline/debian/ stretch nginx" >> /etc/apt/sources.list \
     && apt-get update \
     && apt-get install --no-install-recommends --no-install-suggests -y \
                        libxml2-dev \

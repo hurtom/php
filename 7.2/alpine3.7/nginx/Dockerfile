@@ -1,4 +1,4 @@
-FROM php:7.1-fpm-alpine3.4
+FROM php:7.2-fpm-alpine3.7
 
 LABEL maintainer "https://github.com/hurtom/"
 
@@ -28,9 +28,7 @@ RUN apk add --no-cache \
             libpng \
             tzdata \
             unzip \
-    && apk add --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/v3.6/main \
             nginx \
-    && apk add --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/v3.6/community \
             runit
 
 RUN cp /usr/share/zoneinfo/Europe/Kiev /etc/localtime \
