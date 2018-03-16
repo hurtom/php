@@ -14,7 +14,7 @@ RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 573BFD6B3D8FBC64107
                        zlib1g-dev \
                        libfreetype6-dev \
                        libjpeg62-turbo-dev \
-                       libpng12-dev \
+                       libpng-dev \
                        unzip \
                        git \
                        ca-certificates \
