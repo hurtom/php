@@ -1,4 +1,4 @@
-FROM php:5.6-fpm-jessie
+FROM php:5.6-fpm-stretch
 
 LABEL maintainer "https://github.com/hurtom/"
 

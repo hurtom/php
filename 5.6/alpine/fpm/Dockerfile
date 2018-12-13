@@ -1,4 +1,4 @@
-FROM php:5.6-fpm-alpine3.4
+FROM php:5.6-fpm-alpine3.8
 
 LABEL maintainer "https://github.com/hurtom/"
 
@@ -27,11 +27,7 @@ RUN apk add --no-cache \
             libintl \
             libpng \
             tzdata \
-            unzip \
-    && apk add --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/v3.6/main \
-            nginx \
-    && apk add --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/v3.6/community \
-            runit
+            unzip
 
 RUN cp /usr/share/zoneinfo/Europe/Kiev /etc/localtime \
     && echo "Europe/Kiev" > /etc/timezone
@@ -40,14 +36,3 @@ RUN sed -ri 's/^www-data:x:82:82:/www-data:x:1000:1000:/' /etc/passwd
 
 RUN sed -ri '/^access.log/ s/^/; /' /usr/local/etc/php-fpm.d/docker.conf \
     && sed -ri "s/^pm = dynamic/pm = ondemand/" /usr/local/etc/php-fpm.d/www.conf
-
-RUN ln -sf /dev/stdout /var/log/nginx/access.log \
-    && ln -sf /dev/stderr /var/log/nginx/error.log
-
-EXPOSE 80
-
-COPY runit /etc/runit
-
-RUN find /etc/runit -type f -exec chmod +x {} \;
-
-CMD ["runsvdir", "/etc/runit"]

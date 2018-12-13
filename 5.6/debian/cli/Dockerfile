@@ -1,4 +1,4 @@
-FROM php:5.6-cli-jessie
+FROM php:5.6-cli-stretch
 
 LABEL maintainer "https://github.com/hurtom/"
 

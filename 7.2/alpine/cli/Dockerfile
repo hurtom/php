@@ -1,4 +1,4 @@
-FROM php:5.6-fpm-alpine3.4
+FROM php:7.2-cli-alpine3.8
 
 LABEL maintainer "https://github.com/hurtom/"
 
@@ -13,7 +13,7 @@ RUN apk add --no-cache --virtual .build-deps \
             libjpeg-turbo-dev \
             libpng-dev \
             zlib-dev \
-    && pecl install redis xdebug-2.5.5 \
+    && pecl install redis xdebug \
     && docker-php-ext-enable redis xdebug \
     && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
     && docker-php-ext-install bcmath gd gettext mysqli opcache pdo_mysql zip \
@@ -33,6 +33,3 @@ RUN cp /usr/share/zoneinfo/Europe/Kiev /etc/localtime \
     && echo "Europe/Kiev" > /etc/timezone
 
 RUN sed -ri 's/^www-data:x:82:82:/www-data:x:1000:1000:/' /etc/passwd
-
-RUN sed -ri '/^access.log/ s/^/; /' /usr/local/etc/php-fpm.d/docker.conf \
-    && sed -ri "s/^pm = dynamic/pm = ondemand/" /usr/local/etc/php-fpm.d/www.conf
